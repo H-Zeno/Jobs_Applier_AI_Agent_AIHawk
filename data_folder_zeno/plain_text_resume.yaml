@@ -1,0 +1,138 @@
+personal_information:
+  name: "Zeno"
+  surname: "Hamers"
+  date_of_birth: "03-06-2002"
+  country: "Switzerland"
+  city: "Zürich"
+  address: "Zürich, Switzerland"
+  zip_code: "8032"
+  phone_prefix: "+41"
+  phone: "772800638"
+  email: "zeno.hamers@gmail.com"
+  github: "https://github.com/H-Zeno"
+  linkedin: "https://linkedin.com/in/zenoh"
+
+education_details:
+  - education_level: "MSc Robotics, Systems and Control"
+    institution: "ETH Zürich"
+    field_of_study: "Robotics, Systems and Control"
+    final_evaluation_grade: "5.45 GPA"
+    start_date: "Sep 2023"
+    year_of_completion: "2026"
+    exam: {}
+  - education_level: "BSc Applied Physics"
+    institution: "TU Delft"
+    field_of_study: "Applied Physics"
+    final_evaluation_grade: "8.26/10 (Cum Laude)"
+    start_date: "Sep 2020"
+    year_of_completion: "2023"
+    exam:
+      Thesis: "8.5/10"
+  - education_level: "Minor Applied Modelling and Machine Learning"
+    institution: "The University of British Columbia"
+    field_of_study: "Applied Modelling and Machine Learning"
+    final_evaluation_grade: "90.2%"
+    start_date: "Sep 2022"
+    year_of_completion: "2022"
+    exam: {}
+
+experience_details:
+  - position: "Robotics Engineering Intern"
+    company: "Nunu.ai (YC W23)"
+    employment_period: "Jul 2024 - Oct 2024"
+    location: "Zürich"
+    industry: "Robotics / AI"
+    key_responsibilities:
+      - "Turned Go2 Quadruped Robot into an Autonomous Embodied Agent capable of room search, navigation, object manipulation, and reporting"
+      - "Developed navigation and manipulation pipeline using ROS2, Nav2, Python, and C++ on NVIDIA Jetson Orin"
+      - "Created a digital twin of the office using NVIDIA Omniverse/Isaac Sim"
+    skills_acquired:
+      - "ROS2"
+      - "Python"
+      - "C++"
+      - "Edge Computing"
+      - "Digital Twin"
+
+projects:
+  - name: "Language-based Scene-Aware Robot Planning"
+    description: "Semester project at CVG (ETH) focusing on real-time memory mapping with 3D semantic scene graphs and agent-based planning for controlling a Spot quadruped robot."
+    link: "N/A"
+  - name: "Dexterous Soft Robotic Hand"
+    description: "Coursework project designing, building, and controlling a soft robotic hand using teleoperation and reinforcement learning with CAD and MuJoCo."
+    link: "https://github.com/H-Zeno/DexterousSoftRoboticHand"
+  - name: "SpatiaList"
+    description: "Coursework project developing a multi-user persistent post-it placement application in mixed-reality using Hololens2."
+    link: "https://github.com/H-Zeno/SpatiaList"
+  - name: "ANYmal Escalator Climbing Project"
+    description: "Coursework project extending the reinforcement learning controller of ANYmal On Wheels to support escalator climbing using NVIDIA Omniverse."
+    link: "N/A"
+  - name: "Locally Consistent Visual Odometry Pipeline"
+    description: "Coursework project developing a visual odometry pipeline tested on the KITTI, Malaga, and Parking datasets."
+    link: "https://github.com/H-Zeno/VisualOdometry"
+
+achievements:
+  - name: "Best Consultancy Project (NAHSS)"
+    description: "Led the BYD Auto consulting team to win the Best Consultancy Project at the Netherlands-Asia Honours Summer School (Feb 2022 - Oct 2022) at the National University of Singapore."
+  - name: "Huawei Seeds for the Future Scholarship"
+    description: "Awarded in 2022 to recognize technical top talent in the final year of bachelor's studies."
+  - name: "Holland Scholarship"
+    description: "Received a mobility grant in 2022 for participation in an exchange program outside the European Economic Area."
+  - name: "Finalist Philosophy Olympiad Belgium"
+    description: "Achieved finalist position in the Philosophy Olympiad Belgium in 2020."
+
+certifications:
+
+languages:
+  - language: "English"
+    proficiency: "C2"
+  - language: "Dutch"
+    proficiency: "Native"
+  - language: "German"
+    proficiency: "B2"
+  - language: "French"
+    proficiency: "B1"
+
+interests:
+  - "Robotics"
+  - "Artificial Intelligence"
+  - "Control Systems"
+  - "Computer Vision"
+
+availability:
+  notice_period: "Spring-Summer 2025"
+
+salary_expectations:
+  salary_range_usd: "Not specified"
+
+self_identification:
+  gender: "Male"
+  pronouns: "He/Him"
+  veteran: "No"
+  disability: "No"
+  ethnicity: "Belgian"
+
+legal_authorization:
+  eu_work_authorization: "Yes"
+  us_work_authorization: "No"
+  requires_us_visa: "Yes"
+  requires_us_sponsorship: "Yes"
+  requires_eu_visa: "No"
+  legally_allowed_to_work_in_eu: "Yes"
+  legally_allowed_to_work_in_us: "No"
+  requires_eu_sponsorship: "No"
+  canada_work_authorization: "No"
+  requires_canada_visa: "Yes"
+  legally_allowed_to_work_in_canada: "No"
+  requires_canada_sponsorship: "Yes"
+  uk_work_authorization: "No"
+  requires_uk_visa: "Yes"
+  legally_allowed_to_work_in_uk: "No"
+  requires_uk_sponsorship: "Yes"
+
+work_preferences:
+  remote_work: "Yes"
+  in_person_work: "Yes"
+  open_to_relocation: "Yes"
+  willing_to_complete_assessments: "Yes"
+  willing_to_undergo_drug_tests: "Yes"
+  willing_to_undergo_background_checks: "Yes"

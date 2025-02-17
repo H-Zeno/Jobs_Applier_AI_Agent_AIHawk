@@ -10,8 +10,11 @@ from loguru import logger
 
 from src.libs.resume_and_cover_builder.llm.llm_job_parser import LLMParser
 from src.job import Job
-from src.utils.chrome_utils import HTML_to_PDF
 from .config import global_config
+
+import requests
+from bs4 import BeautifulSoup
+from weasyprint import HTML
 
 class ResumeFacade:
     def __init__(self, api_key, style_manager, resume_generator, resume_object, output_path):
@@ -37,9 +40,6 @@ class ResumeFacade:
         self.resume_generator.set_resume_object(resume_object)
         self.selected_style = None  # Property to store the selected style
     
-    def set_driver(self, driver):
-         self.driver = driver
-
     def prompt_user(self, choices: list[str], message: str) -> str:
         """
         Prompt the user with the given message and choices.
@@ -69,10 +69,12 @@ class ResumeFacade:
 
         
     def link_to_job(self, job_url):
-        self.driver.get(job_url)
-        self.driver.implicitly_wait(10)
-        body_element = self.driver.find_element("tag name", "body")
-        body_element = body_element.get_attribute("outerHTML")
+        response = requests.get(job_url)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, 'html.parser')
+        # Extract the body element HTML if available; otherwise, use the full text
+        body_element = str(soup.body) if soup.body else response.text
+
         self.llm_job_parser = LLMParser(openai_api_key=global_config.API_KEY)
         self.llm_job_parser.set_body_html(body_element)
 
@@ -98,14 +100,12 @@ class ResumeFacade:
         if style_path is None:
             raise ValueError("You must choose a style before generating the PDF.")
 
-
         html_resume = self.resume_generator.create_resume_job_description_text(style_path, self.job.description)
 
         # Generate a unique name using the job URL hash
         suggested_name = hashlib.md5(self.job.link.encode()).hexdigest()[:10]
-        
-        result = HTML_to_PDF(html_resume, self.driver)
-        self.driver.quit()
+        result = HTML(string=html_resume).write_pdf()
+
         return result, suggested_name
     
     
@@ -124,8 +124,8 @@ class ResumeFacade:
             raise ValueError("You must choose a style before generating the PDF.")
         
         html_resume = self.resume_generator.create_resume(style_path)
-        result = HTML_to_PDF(html_resume, self.driver)
-        self.driver.quit()
+        result = HTML(string=html_resume).write_pdf()
+
         return result
 
     def create_cover_letter(self) -> tuple[bytes, str]:
@@ -148,6 +148,6 @@ class ResumeFacade:
         suggested_name = hashlib.md5(self.job.link.encode()).hexdigest()[:10]
 
         
-        result = HTML_to_PDF(cover_letter_html, self.driver)
-        self.driver.quit()
+        result = HTML(string=cover_letter_html).write_pdf()
+
         return result, suggested_name

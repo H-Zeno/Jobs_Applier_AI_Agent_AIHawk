@@ -3,21 +3,21 @@ hybrid: true
 onsite: true
 
 experience_level:
-  internship: false
+  internship: true
   entry: true
   associate: true
-  mid_senior_level: true
+  mid_senior_level: false
   director: false
   executive: false
 
 job_types:
   full_time: true
   contract: false
-  part_time: false
+  part_time: true
   temporary: true
-  internship: false
+  internship: true
   other: false
-  volunteer: true
+  volunteer: false
 
 date:
   all_time: false
@@ -26,10 +26,10 @@ date:
   24_hours: true
 
 positions:
-  - Software engineer
+  - Robotics Engineer
 
 locations:
-  - Germany
+  - Switzerland
 
 apply_once_at_company: true
 
@@ -45,4 +45,3 @@ title_blacklist:
 
 location_blacklist:
   - Brazil
-

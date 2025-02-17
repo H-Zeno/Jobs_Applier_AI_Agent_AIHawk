@@ -33,6 +33,7 @@ share/python-wheels/
 MANIFEST
 chrome_profile/*
 data_folder/output/*
+data_folder/secrets.yaml
 answers.json
 # PyInstaller
 # Usually these files are written by a python script from a template
@@ -42,6 +43,7 @@ answers.json
 .venv
 .pytest_cache
 virtual
+JobApplier
 
 # Installer logs
 pip-log.txt

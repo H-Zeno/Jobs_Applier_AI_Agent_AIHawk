@@ -1,11 +1,9 @@
 import os
 import time
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager  # Import webdriver_manager
 import urllib
 from src.logging import logger
+import pdfkit
+import base64
 
 def chrome_browser_options():
     logger.debug("Setting Chrome browser options")
@@ -34,19 +32,6 @@ def chrome_browser_options():
     logger.debug("Using Chrome in incognito mode")
     
     return options
-
-def init_browser() -> webdriver.Chrome:
-    try:
-        options = chrome_browser_options()
-        # Use webdriver_manager to handle ChromeDriver
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
-        logger.debug("Chrome browser initialized successfully.")
-        return driver
-    except Exception as e:
-        logger.error(f"Failed to initialize browser: {str(e)}")
-        raise RuntimeError(f"Failed to initialize browser: {str(e)}")
-
-
 
 def HTML_to_PDF(html_content, driver):
     """
@@ -91,3 +76,36 @@ def HTML_to_PDF(html_content, driver):
     except Exception as e:
         logger.error(f"Si è verificata un'eccezione WebDriver: {e}")
         raise RuntimeError(f"Si è verificata un'eccezione WebDriver: {e}")
+
+def HTML_to_PDF_no_chrome(html_content):
+    """
+    Converts an HTML string to PDF without using Chrome.
+
+    Uses pdfkit (which requires wkhtmltopdf) to generate the PDF and returns the PDF as a Base64-encoded string.
+
+    :param html_content: HTML string to convert.
+    :return: Base64-encoded PDF string.
+    :raises ValueError: If the HTML content is not a valid non-empty string.
+    :raises RuntimeError: If the conversion fails.
+    """
+    if not isinstance(html_content, str) or not html_content.strip():
+        raise ValueError("Il contenuto HTML deve essere una stringa non vuota.")
+
+    try:
+        options = {
+            'page-size': 'A4',
+            'margin-top': '0.8in',
+            'margin-right': '0.5in',
+            'margin-bottom': '0.8in',
+            'margin-left': '0.5in',
+            'encoding': "UTF-8",
+            'no-outline': None,
+        }
+        # Generate PDF as binary data
+        pdf_data = pdfkit.from_string(html_content, False, options=options)
+        # Encode the PDF data as base64
+        encoded_pdf = base64.b64encode(pdf_data).decode('utf-8')
+        return encoded_pdf
+    except Exception as e:
+        logger.error(f"Error converting HTML to PDF using pdfkit: {e}")
+        raise RuntimeError(f"Conversion failed: {e}")
